@@ -2,7 +2,7 @@ import mysql.connector
 
 def menu():
   print("--------------------------------------------")
-  print("1. View Account Balances ")
+  print("1. View Balance ")
   print("2. Deposit ")
   print("3. Withdraw ")
   print("4. Delete account")
@@ -27,7 +27,7 @@ for row in cursor:
 
 def options():
   name = input("What is your name?: ")
-  userInput = int(input("What would like to do?: "))
+  userInput = int(input("Select number: "))
   
   if userInput == 1:
     try:
@@ -44,7 +44,7 @@ def options():
   elif userInput == 2:
     amount = int(input("How much would you like to deposit?: "))
     if amount <= 0:
-      print("Can not put negative amount in?")
+      print("Please enter a positive number?")
     else:
       testQuery = ("UPDATE bank  SET money = " + str(amount) + " + money  WHERE acc_name = " + "'" + name + "'") 
       cursor.execute(testQuery)
